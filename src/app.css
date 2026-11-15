@@ -1,1 +1,130 @@
 @import "tailwindcss";
+
+/* Class-based dark mode: toggle `.dark` on <html> */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Semantic tokens — light mode (default) */
+:root {
+  --page: #f7f8f7;
+  --page-elevated: #ffffff;
+  --surface: #ffffff;
+  --surface-muted: #eff3f0;
+  --ink: #080f0b;
+  --muted: #53615a;
+  --faint: #78857e;
+  --line: rgba(8, 15, 11, 0.1);
+  --line-strong: rgba(8, 15, 11, 0.18);
+  --accent: #0b7a53;
+  --accent-bright: #10b981;
+  --accent-soft: rgba(16, 185, 129, 0.1);
+  --danger: #b42318;
+  --danger-soft: rgba(180, 35, 24, 0.08);
+  --header: rgba(247, 248, 247, 0.78);
+  --code-bg: #0a0f0c;
+  --code-ink: #dbe5df;
+  color-scheme: light;
+}
+
+/* Semantic tokens — dark mode (html.dark) */
+.dark {
+  --page: #060907;
+  --page-elevated: #0a0e0b;
+  --surface: #0c120e;
+  --surface-muted: #101712;
+  --ink: #eef3ef;
+  --muted: #9aa79f;
+  --faint: #707d75;
+  --line: rgba(255, 255, 255, 0.08);
+  --line-strong: rgba(255, 255, 255, 0.16);
+  --accent: #6ee7b7;
+  --accent-bright: #34d399;
+  --accent-soft: rgba(110, 231, 183, 0.1);
+  --danger: #fca5a5;
+  --danger-soft: rgba(252, 165, 165, 0.12);
+  --header: rgba(6, 9, 7, 0.72);
+  --code-bg: #070b08;
+  --code-ink: #dbe5df;
+  color-scheme: dark;
+}
+
+@theme inline {
+  /* Semantic (themeable) → generates bg-page, text-ink, border-line, ... */
+  --color-page: var(--page);
+  --color-page-elevated: var(--page-elevated);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-accent: var(--accent);
+  --color-accent-bright: var(--accent-bright);
+  --color-accent-soft: var(--accent-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-header: var(--header);
+  --color-code-bg: var(--code-bg);
+  --color-code-ink: var(--code-ink);
+
+  /* shadcn-svelte component tokens — mapped onto the palette above */
+  --color-background: var(--page);
+  --color-foreground: var(--ink);
+  --color-card: var(--surface);
+  --color-card-foreground: var(--ink);
+  --color-popover: var(--page-elevated);
+  --color-popover-foreground: var(--ink);
+  --color-primary: var(--accent);
+  --color-primary-foreground: #ffffff;
+  --color-secondary: var(--surface-muted);
+  --color-secondary-foreground: var(--ink);
+  --color-accent-foreground: #ffffff;
+  --color-muted-foreground: var(--muted);
+  --color-destructive: var(--danger);
+  --color-destructive-foreground: #ffffff;
+  --color-border: var(--line);
+  --color-input: var(--line-strong);
+  --color-ring: var(--accent-bright);
+
+  /* Static palette — Pine */
+  --color-pine-950: #0a1710;
+  --color-pine-900: #10241a;
+  --color-pine-800: #173325;
+  --color-pine-700: #1e4532;
+  --color-pine-600: #295b43;
+  --color-pine-500: #357556;
+  --color-pine-400: #6ea37c;
+  --color-pine-300: #9fc3a9;
+  --color-pine-200: #c9ded0;
+  --color-pine-100: #e5f0e6;
+
+  /* Static palette — Sage */
+  --color-sage-50: #f4f8f5;
+  --color-sage-100: #e5efe8;
+  --color-sage-200: #c9ded0;
+  --color-sage-300: #9fc3a9;
+  --color-sage-400: #6ea37c;
+  --color-sage-500: #46845f;
+  --color-sage-600: #35674a;
+  --color-sage-700: #274c36;
+
+  /* Static palette — Paper */
+  --color-paper-base: #f8faf8;
+  --color-paper-card: #ffffff;
+  --color-paper-subtle: #eff4f0;
+  --color-paper-border: #dde5df;
+  --color-paper-muted: #4e5f55;
+
+  /* Static palette — Dark surfaces */
+  --color-surface-dark-base: #09100c;
+  --color-surface-dark-card: #111a14;
+  --color-surface-dark-subtle: #17241c;
+  --color-surface-dark-border: rgba(255, 255, 255, 0.08);
+}
+
+@layer base {
+  body {
+    background-color: var(--color-page);
+    color: var(--color-ink);
+  }
+}
