@@ -1,7 +1,15 @@
 @import "tailwindcss";
+@import "@fontsource-variable/inter";
 
 /* Class-based dark mode: toggle `.dark` on <html> */
 @custom-variant dark (&:where(.dark, .dark *));
+
+/* Typography — self-hosted Inter Variable for the whole app */
+@theme {
+  --font-sans:
+    "Inter Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+}
 
 /* Semantic tokens — light mode (default) */
 :root {
@@ -22,6 +30,16 @@
   --header: rgba(247, 248, 247, 0.78);
   --code-bg: #0a0f0c;
   --code-ink: #dbe5df;
+
+  /* Filled-control (button) colors — deliberately calm, not neon */
+  --primary: #1e4532;
+  --primary-hover: #295b43;
+
+  /* Foreground colors for filled controls (themeable for contrast) */
+  --primary-foreground: #ffffff;
+  --accent-foreground: #ffffff;
+  --destructive-foreground: #ffffff;
+
   color-scheme: light;
 }
 
@@ -36,14 +54,23 @@
   --faint: #707d75;
   --line: rgba(255, 255, 255, 0.08);
   --line-strong: rgba(255, 255, 255, 0.16);
-  --accent: #6ee7b7;
-  --accent-bright: #34d399;
-  --accent-soft: rgba(110, 231, 183, 0.1);
+  --accent: #6ea37c;
+  --accent-bright: #57a07a;
+  --accent-soft: rgba(110, 163, 124, 0.14);
   --danger: #fca5a5;
   --danger-soft: rgba(252, 165, 165, 0.12);
   --header: rgba(6, 9, 7, 0.72);
   --code-bg: #070b08;
   --code-ink: #dbe5df;
+
+  /* Calm, muted green for filled controls in dark mode */
+  --primary: #2b5a42;
+  --primary-hover: #357556;
+
+  --primary-foreground: #eef3ef;
+  --accent-foreground: #06120b;
+  --destructive-foreground: #2a0d0d;
+
   color-scheme: dark;
 }
 
@@ -74,14 +101,15 @@
   --color-card-foreground: var(--ink);
   --color-popover: var(--page-elevated);
   --color-popover-foreground: var(--ink);
-  --color-primary: var(--accent);
-  --color-primary-foreground: #ffffff;
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-foreground: var(--primary-foreground);
   --color-secondary: var(--surface-muted);
   --color-secondary-foreground: var(--ink);
-  --color-accent-foreground: #ffffff;
+  --color-accent-foreground: var(--accent-foreground);
   --color-muted-foreground: var(--muted);
   --color-destructive: var(--danger);
-  --color-destructive-foreground: #ffffff;
+  --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--line);
   --color-input: var(--line-strong);
   --color-ring: var(--accent-bright);

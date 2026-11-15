@@ -1,2 +1,2 @@
-export { default, Button, type ButtonProps, type ButtonVariant, type ButtonSize } from "./button.svelte";
-export { buttonVariants } from "./button-variants";
+export { default as Button, default } from "./button.svelte";
+export { buttonVariants, type ButtonVariant, type ButtonSize } from "./button-variants";
